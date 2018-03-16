@@ -1,0 +1,3 @@
+# Run all the testcase
+
+go test -v -cover ./...
