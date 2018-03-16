@@ -26,7 +26,7 @@ func boldWords(words []string, S string) string {
 		return ``
 	}
 	boldIndexArr := []int{}
-	Ss := []rune(S)
+	//Ss := []rune(S)
 	for _, s := range words {
 		if len(s) == 0 || len(s) > len(S) {
 			continue

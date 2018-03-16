@@ -24,33 +24,32 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	l1 := len(nums1)
 	l2 := len(nums2)
 	l := l1 + l2
-	arr := make(map[int]int, l)
+	arr := make(map[int]int, l/2+1) //中值只会出现在左半部分+1
 
 	i, j := 0, 0
-	for i+j < l {
+	for i+j < l/2+1 {
+		if i == l1 {
+			arr[i+j] = nums2[j]
+			j++
+			continue
+		}
+		if j == l2 {
+			arr[i+j] = nums1[i]
+			i++
+			continue
+		}
+
 		if nums1[i] < nums2[j] {
 			arr[i+j] = nums1[i]
-			if i < l1 {
-				i++
-			} else {
-				if j < l2 {
-					j++
-				}
-			}
+			i++
 		} else {
-			arr[i+j] = nums1[j]
-			if j < l2 {
-				j++
-			} else {
-				if i < l1 {
-					i++
-				}
-			}
+			arr[i+j] = nums2[j]
+			j++
 		}
 	}
 
 	if l%2 == 0 {
-		return (float64)(arr[l/2]+arr[l/2+1]) / 2
+		return (float64)(arr[l/2-1]+arr[l/2]) / 2
 	}
-	return (float64)(arr[l/2+1])
+	return (float64)(arr[l/2])
 }

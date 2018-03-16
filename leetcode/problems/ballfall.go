@@ -1,21 +1,17 @@
 package problems
 
-import (
-	"fmt"
-)
+/*
+一个球从h高度落下，每次弹起高度都是上次的一半，求十次弹起后的最高高度以及当时球运动距离
+*/
 
-func ballfall() {
-	var h float64 = 100
-	t := 10
-	i := 1
-	var total float64 = 0
+func ballfall(h float64, t uint) (curh, toth float64) {
+	var i uint = 1
 
 	for i <= t {
-		total += h
+		toth += h
 		h = h / 2
 		i++
 	}
 
-	fmt.Println("第十次高度: ", h)
-	fmt.Println("总经过高度: ", total)
+	return
 }
