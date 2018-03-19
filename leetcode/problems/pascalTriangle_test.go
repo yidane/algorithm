@@ -10,5 +10,4 @@ func Test_pascalTriangle(t *testing.T) {
 	for i := 0; i < len(result); i++ {
 		fmt.Println(result[i])
 	}
-	t.Error(1)
 }

@@ -25,14 +25,12 @@ import (
 
 func Test_rightTriangle(t *testing.T) {
 	for a := 1; a < 1000; a++ {
-		b, c := rightTriangle(a)
+		b, _ := rightTriangle(a)
 
 		if b == 0 {
 			fmt.Println(a)
 		} else {
-			fmt.Println(a, "^2 + ", b, "^2 = ", c, "^2", "	", c-b)
+			//fmt.Println(a, "^2 + ", b, "^2 = ", c, "^2", "	", c-b)
 		}
 	}
-
-	t.Error(1)
 }

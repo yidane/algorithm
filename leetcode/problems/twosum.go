@@ -1,9 +1,5 @@
 package problems
 
-import (
-	"fmt"
-)
-
 //*************************************************************************
 /*
 https://leetcode.com/problems/two-sum/#/description
@@ -27,7 +23,6 @@ func twoSum0(nums []int, target int) []int {
 	for i := 0; i < len(nums); i++ {
 		for j := i + 1; j < len(nums); j++ {
 			if nums[i]+nums[j] == target {
-				fmt.Println(nums[i], nums[j])
 				return []int{i, j}
 			}
 		}
@@ -37,15 +32,16 @@ func twoSum0(nums []int, target int) []int {
 }
 
 //2n
-func twoSum(nums []int, target int) []int {
+func twoSum1(nums []int, target int) []int {
 	if nums == nil || len(nums) <= 1 {
 		return nil
 	}
 
-	arr := make(map[int][]int, len(nums))
+	arr := make(map[int][]int, len(nums)) //倒排索引
 	for i := 0; i < len(nums); i++ {
 		if ii, ok := arr[nums[i]]; ok {
 			ii = append(ii, i)
+			arr[nums[i]] = ii
 		} else {
 			arr[nums[i]] = []int{i}
 		}
@@ -63,6 +59,25 @@ func twoSum(nums []int, target int) []int {
 		if jj, ok := arr[nv]; ok {
 			return []int{ii[0], jj[0]}
 		}
+	}
+
+	return nil
+}
+
+//n
+func twoSum2(nums []int, target int) []int {
+	if nums == nil || len(nums) <= 1 {
+		return nil
+	}
+
+	arr := make(map[int]int)
+
+	for i := 0; i < len(nums); i++ {
+		j := target - nums[i]
+		if v, ok := arr[j]; ok {
+			return []int{v, i}
+		}
+		arr[nums[i]] = i
 	}
 
 	return nil

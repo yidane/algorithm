@@ -3,8 +3,10 @@
 
 package problems
 
-import "fmt"
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 var cache map[int]int = make(map[int]int)
 var totalCache map[int]int = make(map[int]int)
@@ -26,11 +28,30 @@ func Fn(max int) int {
 	return result
 }
 
+/*
+1:1
+2:1
+3:1
+4:1
+5:1
+6:1
+7:1
+8:1
+9:1
+10:2
+11:3
+12:4
+13:5
+14:6
+15:7
+19:11
+20:11
+*/
+
 func CountOne(num int) int {
 	if _, ok := cache[num]; ok {
 		return cache[num]
 	}
-
 	if num < 1 {
 		return 0
 	}
@@ -38,16 +59,45 @@ func CountOne(num int) int {
 		return 1
 	}
 	if num < 10 && num > 1 {
-		return 0
+		return 1
 	}
 	var result int
 	m := num % 10
 	if m == 1 {
 		result++
 	}
-	result = result + CountOne(num/10)
+	result = result + CountOne((num-num%10)/10)
 
 	return result
+}
+
+func CountOne1(num int) int {
+	hCount := 0
+
+	n := num % 10
+	m := (num - n) / 10
+	l := m
+	for m > 0 {
+		if m%10 == 1 {
+			hCount++
+		}
+		m = (m - m%10) / 10
+	}
+
+	total := 0
+	for i := 0; i <= n; i++ {
+		if i == 1 {
+			total++
+		}
+		if hCount > 0 {
+			total += hCount
+		}
+	}
+
+	if l > 10 {
+		return total + CountOne1(l)
+	}
+	return total
 }
 
 //CountOneExec 输出200000以内所有F(n)=n的数
