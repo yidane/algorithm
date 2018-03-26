@@ -39,7 +39,7 @@ func Fn(max int) int {
 8:1
 9:1
 10:2
-11:3
+11:4
 12:4
 13:5
 14:6
@@ -69,6 +69,26 @@ func CountOne(num int) int {
 	result = result + CountOne((num-num%10)/10)
 
 	return result
+}
+
+func CountOne0(num int) int {
+	total := 0
+	for i := 1; i <= num; i++ {
+		t := i
+		for t >= 10 {
+			j := t % 10
+			if j == 1 {
+				total += 1
+			}
+			t = (t - j) / 10
+		}
+
+		if t == 1 {
+			total += 1
+		}
+	}
+
+	return total
 }
 
 func CountOne1(num int) int {
