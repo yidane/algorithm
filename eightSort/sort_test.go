@@ -1,83 +1,51 @@
 package eightSort
 
-import "testing"
+import (
+	"fmt"
+	"testing"
 
-func checkSort(arr []int) bool {
-	for i := 0; i < len(arr)-1; i++ {
-		if arr[i] > arr[i+1] {
-			return false
+	. "github.com/smartystreets/goconvey/convey"
+)
+
+func TestSort(t *testing.T) {
+
+	checkSort := func(actaul interface{}, expected ...interface{}) string {
+		arr := actaul.([]int)
+		name := expected[0].(string)
+		for i := 0; i < len(arr)-1; i++ {
+			if arr[i] > arr[i+1] {
+				return fmt.Sprintf("%s计算后的结果不正确%v", name, arr)
+			}
 		}
+		return ""
 	}
-	return true
-}
 
-func testSort(t *testing.T, sort func([]int) []int) {
-	for i, arr := range preSortedArr {
-		if !checkSort(sort(arr)) {
-			t.Fail()
-			t.Log(i)
-			break
+	sortFuncs := map[string]func([]int) []int{
+		"冒泡排序":  bubbleSort,
+		"冒泡排序1": bubbleSort1,
+		"冒泡排序2": bubbleSort2,
+		"冒泡排序3": bubbleSortError,
+		"插入排序":  insertionSort,
+		"归并排序":  mergeSort,
+		"快速排序":  quickSort,
+		"基数排序":  radixSort,
+		"希尔排序":  shellSort,
+		"选择排序":  selectionSort,
+		"选择排序1": selectionSort1,
+	}
+
+	Convey("测试排序算法", t, func() {
+		for k := range sortFuncs {
+			Convey(k, func() {
+				fun := sortFuncs[k]
+				for _, arr := range preSortedArr {
+					//因为在执行完算法之后，数组就已经完全排序。后续排序算法就看不出效果了。
+					//所有每次调用参数，都采用原数组的副本
+					arr1 := make([]int, len(arr))
+					copy(arr1, arr)
+					So(fun(arr1), checkSort, k)
+				}
+			})
 		}
-	}
-}
-
-func Test_CheckSort(t *testing.T) {
-	var sortedArr = [][]int{
-		{1, 2, 3},
-		{1, 3, 4},
-		{1, 3, 2},
-		{3, 2, 1},
-		{2, 3, 4, 5, 1, 6},
-		{2, 3},
-		{-1, 9},
-		{1},
-	}
-	if !checkSort(sortedArr[0]) {
-		t.Fail()
-	}
-	if !checkSort(sortedArr[1]) {
-		t.Fail()
-	}
-	if checkSort(sortedArr[2]) {
-		t.Fail()
-	}
-	if checkSort(sortedArr[3]) {
-		t.Fail()
-	}
-	if checkSort(sortedArr[4]) {
-		t.Fail()
-	}
-	if !checkSort(sortedArr[5]) {
-		t.Fail()
-	}
-	if !checkSort(sortedArr[6]) {
-		t.Fail()
-	}
-	if !checkSort(sortedArr[7]) {
-		t.Fail()
-	}
-}
-
-func Test_BubbleSort(t *testing.T) {
-	testSort(t, bubbleSort)
-}
-
-func Test_BubbleSort1(t *testing.T) {
-	testSort(t, bubbleSort1)
-}
-
-func Test_BubbleSort2(t *testing.T) {
-	testSort(t, bubbleSort2)
-}
-
-func Test_InsertSort(t *testing.T) {
-	testSort(t, insertionSort)
-}
-
-func Test_SelectionSort(t *testing.T) {
-	testSort(t, selectionSort)
-}
-
-func Test_SelectionSort1(t *testing.T) {
-	testSort(t, selectionSort1)
+	})
 }
