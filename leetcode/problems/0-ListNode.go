@@ -39,6 +39,17 @@ func (listNode *ListNode) ToArray() []int {
 	return array
 }
 
+func (listNode *ListNode) Length() int {
+	len1 := 0
+	listNode1 := listNode
+	for listNode1 != nil {
+		len1++
+		listNode1 = listNode1.Next
+	}
+
+	return len1
+}
+
 func (listNode *ListNode) SameAs(other *ListNode) bool {
 	listNode1 := listNode
 	other1 := other
@@ -47,6 +58,9 @@ func (listNode *ListNode) SameAs(other *ListNode) bool {
 		if listNode1.Val != other1.Val {
 			return false
 		}
+
+		listNode1 = listNode1.Next
+		other1 = other1.Next
 	}
 
 	if listNode1 == nil && other1 == nil { //all must be nil at last
