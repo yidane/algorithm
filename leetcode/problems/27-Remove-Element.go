@@ -1,5 +1,12 @@
 package problems
 
+import "fmt"
+
+/*
+
+*/
+
+
 func removeElement(nums []int, val int) int {
 	i := 0
 	for j := 0; j < len(nums); j++ {
@@ -8,5 +15,8 @@ func removeElement(nums []int, val int) int {
 			i++
 		}
 	}
+
+	fmt.Println(nums[:i])
+
 	return i
 }

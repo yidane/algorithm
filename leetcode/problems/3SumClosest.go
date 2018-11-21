@@ -21,15 +21,15 @@ import (
 // 	}
 // }
 
-func threeSumClosest(nums []int, target int) int {
+func threeSumClosest(array []int, target int) int {
 	sub := 1 << 32
 	t := 0
-	sort.Ints(nums)
-	for k, v := range nums {
+	sort.Ints(array)
+	for k, v := range array {
 		i := 0
-		j := len(nums) - 1
+		j := len(array) - 1
 		for i < k && j > k {
-			total := nums[i] + nums[j] + v
+			total := array[i] + array[j] + v
 			switch {
 			case total < target:
 				i++

@@ -40,7 +40,7 @@ func Test_twoSum(t *testing.T) {
 		return fmt.Sprintf("Expected Result:%v,Result:%v", a, b)
 	}
 
-	Convey("twosum_test.go", t, func() {
+	Convey("1-Two-Sum_test.go", t, func() {
 		for i, tt := range tests {
 			Convey(strconv.Itoa(i), func() {
 				So(twoSum0(tt.args, tt.target), check, tt.want)
