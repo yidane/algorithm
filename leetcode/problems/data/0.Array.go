@@ -1,4 +1,4 @@
-package problems
+package data
 
 //SameArray check two array is same
 func SameArray(arr1, arr2 []int) bool {

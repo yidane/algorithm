@@ -1,5 +1,7 @@
 package problems
 
+import "github.com/yidane/algorithm/leetcode/problems/data"
+
 //*************************************************************************
 /*
 https://leetcode.com/problems/merge-two-sorted-lists/#/description
@@ -8,7 +10,7 @@ Merge two sorted linked lists and return it as a new list. The new list should b
 */
 //*************************************************************************
 
-func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+func mergeTwoLists(l1 *data.ListNode, l2 *data.ListNode) *data.ListNode {
 	if l1 == nil {
 		return l2
 	}
@@ -16,7 +18,7 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 		return l1
 	}
 
-	result := new(ListNode)
+	result := new(data.ListNode)
 	next := result
 	for l1 != nil && l2 != nil {
 		if l1.Val <= l2.Val {

@@ -1,4 +1,4 @@
-package problems
+package data
 
 import (
 	"fmt"
