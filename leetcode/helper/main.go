@@ -85,7 +85,6 @@ func main() {
 		f.Write([]byte("package problems"))
 		f.Close()
 
-
 		tf, err := os.Create(p.TestFileName(tmpPath))
 		if err != nil {
 			fmt.Println(err)
