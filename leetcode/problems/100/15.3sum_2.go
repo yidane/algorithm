@@ -18,7 +18,7 @@ A solution set is:
 //*************************************************************************
 
 func threeSum0(nums []int) [][]int {
-	result := [][]int{}
+	var result [][]int
 	mapKey := make(map[int]bool)
 	if len(nums) > 2 {
 		for i := 0; i < len(nums); i++ {
