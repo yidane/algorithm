@@ -11,6 +11,8 @@ package eightSort
 	3）针对所有的元素重复以上的步骤，除了最后一个。
 	4）持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
 */
+
+//时间复杂度 n!
 func bubbleSort(arr []int) []int {
 	for i := 0; i < len(arr); i++ {
 		for j := len(arr) - 1; j > i; j-- {
@@ -22,24 +24,17 @@ func bubbleSort(arr []int) []int {
 	return arr
 }
 
+/*
 func bubbleSortError(arr []int) []int {
 	hasChange := false
 	for i := 0; i < len(arr); i++ {
 		hasChange = false
-		/*
-			//这样从左到右，只能保证最有最大，不能保证最左最小；然后i+1之后，最左数就无法保证最小。
-			//目标是最小一定要摆放在最左。
-			//因此正确做法是将数向目标方向驱动。
-			// for j := i; j < len(arr)-1; j++ {
-			// 	if arr[j] > arr[j+1] {
-			// 		arr[j+1], arr[j] = arr[j], arr[j+1]
-			// 		hasChange = true
-			// 	}
-			// }
-		*/
-		for j := len(arr) - 1; j > i; j-- {
-			if arr[j-1] > arr[j] {
-				arr[j-1], arr[j] = arr[j], arr[j-1]
+		//这样从左到右，只能保证最右最大，不能保证最左最小；然后i+1之后，最左数就无法保证最小。
+		//目标是最小一定要摆放在最左。
+		//因此正确做法是将数向目标方向驱动。
+		for j := i; j < len(arr)-1; j++ {
+			if arr[j] > arr[j+1] {
+				arr[j+1], arr[j] = arr[j], arr[j+1]
 				hasChange = true
 			}
 		}
@@ -49,7 +44,10 @@ func bubbleSortError(arr []int) []int {
 	}
 	return arr
 }
+*/
 
+//时间复杂度 小于 n!
+//每次寻找最小的，放置在最左边
 func bubbleSort1(arr []int) []int {
 	hasChange := true
 	for i := 0; i < len(arr) && hasChange; i++ {
@@ -65,6 +63,8 @@ func bubbleSort1(arr []int) []int {
 	return arr
 }
 
+//时间复杂度 小于 n!
+//每次寻找最大的，放置在最右边
 func bubbleSort2(arr []int) []int {
 	hasChange := true
 	for i := len(arr) - 1; i > 0 && hasChange; i-- {

@@ -7,6 +7,8 @@ package eightSort
 	2）再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。
 	3）重复第二步，直到所有元素均排序完毕。
 */
+
+//时间复杂度 n!
 func selectionSort(arr []int) []int {
 
 	for i := 0; i < len(arr)-1; i++ {
@@ -24,12 +26,18 @@ func selectionSort(arr []int) []int {
 	return arr
 }
 
+//时间复杂度 n!/2
 //一次循环，找到最大和最小值，分别和两端交换
 func selectionSort1(arr []int) []int {
 	l := len(arr)
-	for i := 0; i < l-i; i++ {
+	for i := 0; i < l/2+1; i++ {
 		tMin := i
 		tMax := l - 1 - i
+
+		if tMax <= tMin {
+			break
+		}
+
 		for j := i; j < l-i; j++ {
 			if arr[tMin] > arr[j] {
 				tMin = j
@@ -38,6 +46,12 @@ func selectionSort1(arr []int) []int {
 				tMax = j
 			}
 		}
+
+		if tMin == l-i-1 && tMax == i {
+			arr[tMin], arr[tMax] = arr[tMax], arr[tMin]
+			continue
+		}
+
 		//如果此时最大最小恰好在对称位置，则这两次交换会回滚
 		if tMin != i {
 			arr[i], arr[tMin] = arr[tMin], arr[i]
