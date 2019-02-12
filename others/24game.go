@@ -1,4 +1,4 @@
-package problems
+package others
 
 /*
 https://leetcode.com/problems/24-game/description/
