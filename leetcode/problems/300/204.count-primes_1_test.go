@@ -15,11 +15,14 @@ func Test_countPrimes(t *testing.T) {
 		{n: 10, want: 4},
 		{n: 12, want: 5},
 		{n: 13, want: 5},
-		{n: 999983, want: 5},
+		{n: 999983, want: 78497},
 	}
 	for _, tt := range tests {
 		t.Run(strconv.Itoa(tt.n), func(t *testing.T) {
 			if got := countPrimes(tt.n); got != tt.want {
+				t.Errorf("countPrimes() = %v, want %v", got, tt.want)
+			}
+			if got := countPrimes1(tt.n); got != tt.want {
 				t.Errorf("countPrimes() = %v, want %v", got, tt.want)
 			}
 		})
