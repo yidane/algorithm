@@ -10,7 +10,7 @@
 * 184   [Department Highest Salary](../leetcode/problems/200/184.department-highest-salary_2.sql) (_Medium_)
 * 185   [Department Top Three Salaries](../leetcode/problems/200/185.department-top-three-salaries_3.sql) (_Hard_)
 * 196   [Delete Duplicate Emails](../leetcode/problems/200/196.delete-duplicate-emails_1.sql) (_Easy_)
-* 197   Rising Temperature (_Easy_)
+* 197   [Rising Temperature](../leetcode/problems/200/197.rising-temperature_1.sql) (_Easy_)
 * 262   Trips and Users (_Hard_)
 * 569   Median Employee Salary (_Hard_)
 * 570   Managers with at Least 5 Direct Reports (_Medium_)
