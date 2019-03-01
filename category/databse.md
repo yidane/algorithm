@@ -16,7 +16,7 @@
 * 570   [Managers with at Least 5 Direct Reports](../leetcode/problems/600/570.managers-with-at-least-5-direct-reports_2.sql) (_Medium_)
 * 571   [Find Median Given Frequency of Numbers](../leetcode/problems/600/571.find-median-given-frequency-of-numbers_3.sql) (_Hard_)
 * 574   [Winning Candidate](../leetcode/problems/600/574.winning-candidate_2.sql) (_Medium_)
-* 577   Employee Bonus (_Easy_)
+* 577   [Employee Bonus](../leetcode/problems/600/577.employee-bonus_1.sql) (_Easy_)
 * 578   Get Highest Answer Rate Question (_Medium_)
 * 579   Find Cumulative Salary of an Employee (_Hard_)
 * 580   Count Student Number in Departments (_Medium_)
