@@ -12,7 +12,7 @@
 * 196   [Delete Duplicate Emails](../leetcode/problems/200/196.delete-duplicate-emails_1.sql) (_Easy_)
 * 197   [Rising Temperature](../leetcode/problems/200/197.rising-temperature_1.sql) (_Easy_)
 * 262   [Trips and Users](../leetcode/problems/300/262.trips-and-users_3.sql) (_Hard_)
-* 569   Median Employee Salary (_Hard_)
+* 569   [Median Employee Salary](../leetcode/problems/600/569.median-employee-salary_3.sql) (_Hard_)
 * 570   Managers with at Least 5 Direct Reports (_Medium_)
 * 571   Find Median Given Frequency of Numbers (_Hard_)
 * 574   Winning Candidate (_Medium_)
