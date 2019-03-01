@@ -26,7 +26,7 @@
 * 595   [Big Countries](../leetcode/problems/600/595.big-countries_1.sql) (_Easy_)
 * 596   [Classes More Than 5 Students](../leetcode/problems/600/596.classes-more-than-5-students_1.sql) (_Easy_)
 * 597   Friend Requests I: Overall Acceptance Rate (_Easy_)
-* 601   Human Traffic of Stadium (_Hard_)
+* 601   [Human Traffic of Stadium](../leetcode/problems/700/601.human-traffic-of-stadium_3.sql) (_Hard_)
 * 602   Friend Requests II: Who Has the Most Friends (_Medium_)
 * 603   Consecutive Available Seats (_Easy_)
 * 607   Sales Person (_Easy_)
