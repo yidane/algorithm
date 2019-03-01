@@ -24,7 +24,7 @@
 * 585   Investments in 2016 (_Medium_)
 * 586   Customer Placing the Largest Number of Orders (_Easy_)
 * 595   [Big Countries](../leetcode/problems/600/595.big-countries_1.sql) (_Easy_)
-* 596   Classes More Than 5 Students (_Easy_)
+* 596   [Classes More Than 5 Students](../leetcode/problems/600/596.classes-more-than-5-students_1.sql) (_Easy_)
 * 597   Friend Requests I: Overall Acceptance Rate (_Easy_)
 * 601   Human Traffic of Stadium (_Hard_)
 * 602   Friend Requests II: Who Has the Most Friends (_Medium_)
