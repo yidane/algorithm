@@ -39,5 +39,5 @@
 * 618   Students Report By Geography (_Hard_)
 * 619   Biggest Single Number (_Easy_)
 * 620   [Not Boring Movies](../leetcode/problems/700/620.not-boring-movies_1.sql) (_Easy_)
-* 626   Exchange Seats (_Medium_)
+* 626   [Exchange Seats](../leetcode/problems/700/626.exchange-seats_2.sql) (_Medium_)
 * 627   Swap Salary (_Easy_)
