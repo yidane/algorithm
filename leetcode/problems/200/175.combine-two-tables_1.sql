@@ -9,10 +9,25 @@
 -- Easy (49.14%)
 -- Total Accepted:    137.9K
 -- Total Submissions: 280.5K
--- Testcase Example:  '{"headers": {"Person": ["PersonId", "LastName", "FirstName"], "Address": ["AddressId", "PersonId", "City", "State"]}, "rows": {"Person": [[1, "Wang", "Allen"]], "Address": [[1, 2, "New York City", "New York"]]}}'
+-- Testcase Example:
+--
+-- {
+--     "headers": {
+--         "Person": ["PersonId", "LastName", "FirstName"],
+--         "Address": ["AddressId", "PersonId", "City", "State"]
+--     },
+--     "rows": {
+--         "Person": [
+--             [1, "Wang", "Allen"]
+--         ],
+--         "Address": [
+--             [1, 2, "New York City", "New York"]
+--         ]
+--     }
+-- }
+--
 --
 -- Table: Person
--- 
 -- 
 -- +-------------+---------+
 -- | Column Name | Type    |
@@ -51,4 +66,6 @@
 --
 # Write your MySQL query statement below
 
-
+select FirstName, LastName, City, State from Person p
+left join Address a
+on p.PersonId = a.PersonId;
