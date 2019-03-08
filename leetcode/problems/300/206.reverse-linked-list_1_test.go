@@ -40,6 +40,7 @@ func Test_reverseList(t *testing.T) {
 					if got.Val != tt.want[i] {
 						t.Fatalf("result of %v should be equal %v but %v", tt.head, tt.want[i], got.Val)
 					}
+					got = got.Next
 				}
 			}
 		})
