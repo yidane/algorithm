@@ -1,5 +1,10 @@
 package problems
 
+import (
+	"bytes"
+	"strconv"
+)
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -94,4 +99,16 @@ func (listNode *ListNode) Equal(array []int) bool {
 	}
 
 	return true
+}
+
+func (listNode *ListNode) StringSequence() string {
+	buf := bytes.Buffer{}
+	node := listNode
+
+	for node != nil {
+		buf.WriteString(strconv.Itoa(node.Val))
+		node = node.Next
+	}
+
+	return buf.String()
 }
