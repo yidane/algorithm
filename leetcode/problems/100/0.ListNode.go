@@ -107,6 +107,7 @@ func (listNode *ListNode) StringSequence() string {
 
 	for node != nil {
 		buf.WriteString(strconv.Itoa(node.Val))
+		buf.WriteString(",")
 		node = node.Next
 	}
 
