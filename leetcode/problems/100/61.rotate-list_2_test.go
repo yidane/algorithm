@@ -19,6 +19,7 @@ func Test_rotateRight(t *testing.T) {
 		{heads: []int{1, 3}, k: 2, wants: []int{1, 3}},
 		{heads: []int{0, 1, 2}, k: 4, wants: []int{2, 0, 1}},
 		{heads: []int{0, 1}, k: 0, wants: []int{0, 1}},
+		{heads: []int{1, 2}, k: 2, wants: []int{1, 2}},
 	}
 
 	for _, tt := range testCases {
