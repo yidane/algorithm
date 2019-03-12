@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test_deleteDuplicates(t *testing.T) {
+func Test_deleteDuplicates2(t *testing.T) {
 	tests := []struct {
 		args []int
 		want []int
