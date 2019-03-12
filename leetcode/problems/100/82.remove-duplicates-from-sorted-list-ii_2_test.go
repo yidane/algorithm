@@ -19,7 +19,7 @@ func Test_deleteDuplicates(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(fmt.Sprint(tt.args), func(t *testing.T) {
 			head := NewListNode(tt.args)
-			if got := deleteDuplicates(head); !got.Equal(tt.want) {
+			if got := deleteDuplicates2(head); !got.Equal(tt.want) {
 				t.Errorf("deleteDuplicates() = %v, want %v", got.StringSequence(), tt.want)
 			}
 		})

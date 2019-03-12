@@ -38,7 +38,7 @@ package problems
  *     Next *ListNode
  * }
  */
-func deleteDuplicates(head *ListNode) *ListNode {
+func deleteDuplicates2(head *ListNode) *ListNode {
 	h1 := head
 	m := make(map[int]int)
 
