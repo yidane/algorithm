@@ -15,7 +15,7 @@ func TestMagicDictionary_Search(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			this := Constructor()
+			this := NewMagicDictionary()
 			this.BuildDict([]string{"hello", "leetcode"})
 			if got := this.Search(tt.word); got != tt.want {
 				t.Errorf("%v MagicDictionary.Search() = %v, want %v", tt.name, got, tt.want)

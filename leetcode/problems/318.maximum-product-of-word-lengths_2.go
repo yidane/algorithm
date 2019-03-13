@@ -41,5 +41,5 @@ package problems
  *
  */
 func maxProduct(words []string) int {
-
+	return 1
 }

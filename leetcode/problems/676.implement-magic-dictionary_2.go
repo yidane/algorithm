@@ -26,7 +26,7 @@ type MagicDictionary struct {
 }
 
 //Constructor Initialize your data structure here.
-func Constructor() MagicDictionary {
+func NewMagicDictionary() MagicDictionary {
 	return MagicDictionary{}
 }
 

@@ -22,7 +22,7 @@ func Test_reverseString(t *testing.T) {
 
 			for i := 0; i < len(tt.s); i++ {
 				if tt.s[i] != tt.wants[i] {
-					t.Fatalf("%s should be equal %s", tt.s[i], tt.wants[i])
+					t.Fatalf("%v should be equal %v", tt.s[i], tt.wants[i])
 				}
 			}
 		})
