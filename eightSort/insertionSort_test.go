@@ -5,5 +5,5 @@ import (
 )
 
 func Test_insertionSort(t *testing.T) {
-	//testSort("插入排序", insertionSort, t)
+	testSort("插入排序", insertionSort, t)
 }

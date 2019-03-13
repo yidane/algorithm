@@ -11,6 +11,8 @@ func insertionSort(arr []int) []int {
 	var j, temp int
 	for i := 0; i < len(arr); i++ {
 		temp = arr[i]
+
+		//依次判断已经排好序的序列，看是否大于当前值，若大于，则依次向后移位，空出该位置，然后将当前值填入该位置
 		for j = i; j > 0 && arr[j-1] > temp; j-- {
 			arr[j] = arr[j-1]
 		}
