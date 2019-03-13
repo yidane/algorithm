@@ -1,9 +1,5 @@
 package problems
 
-import (
-	"github.com/yidane/algorithm/leetcode/problems/data"
-)
-
 /*
 You are given two non-empty linked lists representing two non-negative integers.
 The digits are stored in reverse order and each of their nodes contain a single digit.
@@ -18,8 +14,8 @@ Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807.
 */
 
-func addTwoNumbers(l1 *data.ListNode, l2 *data.ListNode) *data.ListNode {
-	newNode := new(data.ListNode)
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+	newNode := new(ListNode)
 	rtnNode := newNode
 	var nextPlus = false
 	newNode.Val = l1.Val + l2.Val
@@ -32,7 +28,7 @@ func addTwoNumbers(l1 *data.ListNode, l2 *data.ListNode) *data.ListNode {
 	l2 = l2.Next
 
 	for l1 != nil || l2 != nil {
-		newNode.Next = new(data.ListNode)
+		newNode.Next = new(ListNode)
 
 		switch {
 		case l1 == nil:
@@ -61,7 +57,7 @@ func addTwoNumbers(l1 *data.ListNode, l2 *data.ListNode) *data.ListNode {
 	}
 
 	if nextPlus {
-		newNode.Next = new(data.ListNode)
+		newNode.Next = new(ListNode)
 		newNode.Next.Val = 1
 	}
 

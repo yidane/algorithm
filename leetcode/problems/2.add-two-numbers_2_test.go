@@ -1,7 +1,6 @@
 package problems
 
 import (
-	"github.com/yidane/algorithm/leetcode/problems/data"
 	"testing"
 )
 
@@ -15,8 +14,8 @@ func Test_addTwoNumbers(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		l1 := data.NewListNode(test.arr1)
-		l2 := data.NewListNode(test.arr2)
+		l1 := NewListNode(test.arr1)
+		l2 := NewListNode(test.arr2)
 		l3 := addTwoNumbers(l1, l2)
 
 		if !l3.Equal(test.arr3) {
