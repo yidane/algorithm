@@ -40,10 +40,10 @@ package problems
 	我们只需要看有没有，如果有，那么value就是这种这两个和只差的子数组的数目。最后再把s(i)存入。
 
 	S(i)
-	S(i,j)=S(j)-S(i-1)
+	S(i,j)=S(j)-S(i-1) 因为每次计算都是从0开始，所以计算 sum-k 是否存在，相当于截取操作
 */
 
-//todo 没理解
+//todo 算法很巧妙
 func subarraySum(nums []int, k int) int {
 	if len(nums) == 0 {
 		return 0

@@ -11,7 +11,7 @@ func Test_subarraySum(t *testing.T) {
 		k    int
 		want int
 	}{
-		//{nums: []int{1, 1, 1}, k: 2, want: 2},
+		{nums: []int{1, 1, 1}, k: 2, want: 2},
 		{nums: []int{1, 1, 1, 1}, k: 2, want: 3},
 		{nums: []int{-1, 1, 0, -1, 1, 0}, k: 0, want: 11},
 	}
