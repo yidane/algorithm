@@ -27,8 +27,36 @@ func selectionSort(arr []int) []int {
 }
 
 //时间复杂度 n!/2
-//一次循环，找到最大和最小值，分别和两端交换
+//一次循环，找到最大和最小值，分别和两端交换，两端一起检索
 func selectionSort1(arr []int) []int {
+	for left, right := 0, len(arr)-1; left <= right; {
+		min, max := left, right
+		for i := left; i <= right; i++ {
+			if arr[min] > arr[i] {
+				min = i
+			}
+
+			if arr[max] < arr[i] {
+				max = i
+			}
+		}
+
+		arr[min], arr[left] = arr[left], arr[min]
+		if left == max { //如果最大值位于最左边，由于上一步已经将最左边移位到min，因此此时最大值为min
+			max = min
+		}
+		arr[max], arr[right] = arr[right], arr[max]
+
+		left++
+		right--
+	}
+
+	return arr
+}
+
+//时间复杂度 n!/2
+//一次循环，找到最大和最小值，分别和两端交换，从左开始检索，只需要检索一半即可
+func selectionSort2(arr []int) []int {
 	l := len(arr)
 	for i := 0; i < l/2+1; i++ {
 		tMin := i
@@ -47,18 +75,12 @@ func selectionSort1(arr []int) []int {
 			}
 		}
 
-		if tMin == l-i-1 && tMax == i {
-			arr[tMin], arr[tMax] = arr[tMax], arr[tMin]
-			continue
+		arr[i], arr[tMin] = arr[tMin], arr[i]
+		if i == tMax { //如果最大值位于最左边，由于上一步已经将最左边移位到min，因此此时最大值为min
+			tMax = tMin
 		}
+		arr[l-1-i], arr[tMax] = arr[tMax], arr[l-1-i]
 
-		//如果此时最大最小恰好在对称位置，则这两次交换会回滚
-		if tMin != i {
-			arr[i], arr[tMin] = arr[tMin], arr[i]
-		}
-		if tMax != l-1-i {
-			arr[l-1-i], arr[tMax] = arr[tMax], arr[l-1-i]
-		}
 	}
 
 	return arr
