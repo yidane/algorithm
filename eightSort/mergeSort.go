@@ -11,5 +11,46 @@ package eightSort
 	5. 将另一序列剩下的所有元素直接复制到合并序列尾
 */
 func mergeSort(arr []int) []int {
+	return split(arr, 0, len(arr)-1)
+}
+
+func split(arr []int, left, right int) []int {
+	if left == right {
+		return []int{arr[left]}
+	}
+
+	mid := (right + left) / 2
+
+	arr1 := split(arr, left, mid)
+	arr2 := split(arr, mid+1, right)
+
+	return merge(arr1, arr2)
+}
+
+func merge(arr1, arr2 []int) []int {
+	arr := make([]int, len(arr1)+len(arr2))
+	i, j, m := 0, 0, 0
+
+	for i < len(arr1) && j < len(arr2) {
+		if arr[i] > arr[j] {
+			arr[m] = arr[j]
+			j++
+		} else {
+			arr[m] = arr[i]
+			i++
+		}
+		m++
+	}
+
+	for ; i < len(arr1); i++ {
+		arr[m] = arr1[i]
+		m++
+	}
+
+	for ; j < len(arr2); j++ {
+		arr[m] = arr2[j]
+		m++
+	}
+
 	return arr
 }
