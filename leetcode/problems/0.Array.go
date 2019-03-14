@@ -18,3 +18,21 @@ func SameArray(arr1, arr2 []int) bool {
 
 	return true
 }
+
+func SameFloat64Array(arr1, arr2 []float64) bool {
+	if arr1 == nil && arr2 == nil {
+		return true
+	}
+
+	if len(arr1) != len(arr2) {
+		return false
+	}
+
+	for i := 0; i < len(arr1); i++ {
+		if arr1[i] != arr2[i] {
+			return false
+		}
+	}
+
+	return true
+}
