@@ -7,6 +7,41 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func NewTree(arr []interface{}) *TreeNode {
+	if len(arr) == 0 {
+		return nil
+	}
+
+	if arr[0] == nil {
+		return nil
+	}
+
+	root := TreeNode{Val: arr[0].(int)}
+	root.appendNode(0, arr)
+
+	return &root
+}
+
+func (root *TreeNode) appendNode(i int, arr []interface{}) {
+	li := i*2 + 1
+	ri := li + 1
+	l := len(arr)
+
+	if li < l {
+		if arr[li] != nil {
+			root.AddLeft(arr[li].(int))
+			root.Left.appendNode(li, arr)
+		}
+	}
+
+	if ri < l {
+		if arr[ri] != nil {
+			root.AddRight(arr[ri].(int))
+			root.Right.appendNode(ri, arr)
+		}
+	}
+}
+
 func NewTreeNode(v int) *TreeNode {
 	node := new(TreeNode)
 	node.Val = v
