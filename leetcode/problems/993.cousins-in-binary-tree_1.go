@@ -78,50 +78,56 @@ package problems
  *     Right *TreeNode
  * }
  */
-func isCousins(root *TreeNode, x int, y int) bool {
-	//第一层节点不可能为堂兄弟
-	if x == y || root == nil || root.Val == x || root.Val == y {
-		return false
-	}
 
-	//若不存在第二层，则不存在堂兄弟
-	if root.Left == nil || root.Right == nil {
-		return false
-	}
-
-	//第二层的节点不存在堂兄弟
-	if root.Left.Val == x || root.Left.Val == y || root.Right.Val == x || root.Right.Val == y {
-		return false
-	}
-
-	px, kx, cx := findLocation(root.Left, 0, x)
-	py, ky, cy := findLocation(root.Right, 0, y)
-
-	return cx && cy && kx == ky && px != py
+type n struct {
+	parent int
+	k      int
+	v      int
 }
 
-func findLocation(node *TreeNode, l, x int) (parent, k int, contain bool) {
-	root := node
+func (n *n) hasValue() bool {
+	return n.parent != 0
+}
 
-	if root.Val > x {
-		if root.Left == nil {
-			return -1, -1, false
-		}
+func (n *n) setValue(p, k int) {
+	n.parent = p
+	n.k = k
+}
 
-		if root.Left.Val == x {
-			return root.Val, l + 1, true
-		}
-
-		return findLocation(root.Left, l+1, x)
-	} else {
-		if root.Right == nil {
-			return -1, -1, false
-		}
-
-		if root.Right.Val == x {
-			return root.Val, l + 1, true
-		}
-
-		return findLocation(root.Right, l+1, x)
+func (n *n) equal(an *n) bool {
+	if n == nil || an == nil {
+		return false
 	}
+
+	return n.parent != an.parent && n.k == an.k
+}
+
+func isCousins(root *TreeNode, x int, y int) bool {
+	xn := &n{v: x}
+	yn := &n{v: y}
+
+	findLocation(root, -1, 0, xn, yn)
+
+	return xn.equal(yn)
+}
+
+func findLocation(root *TreeNode, p, k int, xn, yn *n) {
+	if root == nil {
+		return
+	}
+
+	if root.Val == xn.v {
+		xn.setValue(p, k)
+	}
+
+	if root.Val == yn.v {
+		yn.setValue(p, k)
+	}
+
+	if xn.hasValue() && yn.hasValue() {
+		return
+	}
+
+	findLocation(root.Left, root.Val, k+1, xn, yn)
+	findLocation(root.Right, root.Val, k+1, xn, yn)
 }
