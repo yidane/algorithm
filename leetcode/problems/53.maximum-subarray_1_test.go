@@ -8,7 +8,10 @@ func Test_maxSubArray(t *testing.T) {
 		args []int
 		want int
 	}{
-		{args: []int{-2,1,-3,4,-1,2,1,-5,4}, want: 6},
+		//{args: []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}, want: 6},
+		//{args: []int{2, 1, -1, 5, 1, -5, 4}, want: 8},
+		//{args: []int{-2, 1, -1, 5, 1, -5, 4}, want: 6},
+		{args: []int{-2, 3, -1, 5, 1, -5, 4}, want: 8},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
