@@ -84,34 +84,60 @@ package problems
  *
  */
 
-//todo 不好解
+//todo:bugs
 func isMatch(s string, p string) bool {
-	//if len(s) == 0 {
-	//	if p == "*" || p == "" {
-	//		return true
-	//	} else {
-	//		return false
-	//	}
-	//}
-	//
-	//if len(p) == 0 {
-	//	return false
-	//}
-	//
-	//var preceding uint8
-	//j := 0
-	//for i := 0; i < len(s); i++ {
-	//	r := s[i]
-	//	pr := p[j]
-	//
-	//	if r == pr || pr == '.' || r == preceding {
-	//		return false
-	//	}
-	//
-	//	if pr != '*' {
-	//		j++
-	//	}
-	//}
+	var lastRune, nextRune rune = -1, -1
 
-	return true
+	j := 0
+	for _, c := range s {
+		if j == len(p) {
+			return false
+		}
+
+		pc := rune(p[j])
+
+		for {
+			if pc == c || pc == '.' {
+				//当前字符匹配，游标右移
+				lastRune = pc
+				if j+1 < len(p) {
+					nextRune = rune(p[j+1])
+				} else {
+					nextRune = -1
+				}
+				j++
+				break
+			} else if pc == '*' {
+				//当前字符为(*)，判断上一个字符是否匹配
+				if lastRune == c || lastRune == '.' {
+					if j+1 < len(p) {
+						nextRune = rune(p[j+1])
+					} else {
+						nextRune = -1
+					}
+					j++
+					break
+				}
+			} else {
+				//当前字符不是(.*),判断下一个字符是否存在，且下一个字符为(*),这样可以过滤此匹配
+				if j+1 < len(p) {
+					np := rune(p[j+1])
+					if np != '*' {
+						return false
+					}
+					j++
+				}
+			}
+
+			j++
+
+			if j == len(p) {
+				return false
+			}
+
+			pc = rune(p[j])
+		}
+	}
+
+	return nextRune == -1
 }
