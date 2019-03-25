@@ -73,3 +73,83 @@ func strStr(haystack string, needle string) int {
 
 	return -1
 }
+
+/*
+//其实这个你自己静下心模拟一下过程，可以很快理解的
+void kmp_next(char *s)
+{
+    int len = strlen(s);
+    next[0] = -1;
+    int k = -1;
+    for(int i = 1; i < len; i ++) {
+        while(k > -1 && s[k+1] != s[i]) {
+            k = next[k];
+        }
+        if(s[k+1] == s[i]) {
+            k ++;
+        }
+        next[i] = k;
+    }
+}
+
+public void search(String original, String find, int next[]) {
+	int j = 0;
+	for (int i = 0; i < original.length(); i++) {
+		while (j > 0 && original.charAt(i) != find.charAt(j))
+			j = next[j];
+		if (original.charAt(i) == find.charAt(j))
+			j++;
+		if (j == find.length()) {
+			System.out.println("find at position " + (i - j));
+			System.out.println(original.subSequence(i - j + 1, i + 1));
+			j = next[j];
+		}
+	}
+}
+*/
+
+//TODO:KMP算法未理解
+func kmpNext(s string) []int {
+	next := make([]int, len(s))
+	next[0] = -1
+	k := -1
+
+	for i := 1; i < len(s); i++ {
+		for k > -1 && s[i] != s[k+1] {
+			k = next[k]
+		}
+
+		if s[k+1] == s[i] {
+			k++
+		}
+
+		next[i] = k
+	}
+
+	return next
+}
+
+func search(original, find string, next []int) int {
+	j := 0
+
+	for i := 0; i < len(original); i++ {
+		for j > 0 && original[i] != find[j] {
+			j = next[j]
+		}
+
+		if original[i] == find[j] {
+			j++
+		}
+
+		if j == len(find) {
+			return i - j
+		}
+	}
+
+	return -1
+}
+
+func KMP(haystack string, needle string) int {
+	next := kmpNext(needle)
+	return search(haystack, needle, next)
+}
