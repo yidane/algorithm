@@ -22,9 +22,14 @@ package problems
  *
  * Input: 1->2->3->4->5->NULL, m = 2, n = 4
  * Output: 1->4->3->2->5->NULL
+
+1 2 3 4 5
+1 3 2 4 5
+1 4 3 2 5
+
  *
  *
- */
+*/
 /**
  * Definition for singly-linked list.
  * type ListNode struct {
@@ -37,32 +42,36 @@ func reverseBetween(head *ListNode, m int, n int) *ListNode {
 		return head
 	}
 
-	i := 1
+	var prevHead = new(ListNode)
+	var result = prevHead
+	var h, e *ListNode
+	for i := 1; head != nil; i++ {
+		if i < m {
+			prevHead.Next = head
+			prevHead = prevHead.Next
+			head = head.Next
+			continue
+		}
 
-	h := head
-	e := h
-	head = head.Next
-	h.Next = nil
-	for head != nil {
+		if i > n {
+			break
+		}
+
 		cur := head
 		head = head.Next
-		cur.Next = nil
 
-		i++
-		if i < m {
-			e.Next = cur
-			continue
-		}
-
-		if i <= n {
+		if h == nil {
+			cur.Next = nil
+			h = cur
+			e = cur
+		} else {
 			cur.Next = h
 			h = cur
-			continue
 		}
-
-		e.Next = cur
-		e = e.Next
 	}
 
-	return h
+	prevHead.Next = h
+	e.Next = head
+
+	return result.Next
 }
