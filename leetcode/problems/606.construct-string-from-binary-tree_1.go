@@ -1,5 +1,10 @@
 package problems
 
+import (
+	"bytes"
+	"strconv"
+)
+
 /*
  * @lc app=leetcode id=606 lang=golang
  *
@@ -62,5 +67,28 @@ package problems
  * }
  */
 func tree2str(t *TreeNode) string {
-	return ""
+	if t == nil {
+		return ""
+	}
+
+	buf := bytes.Buffer{}
+	buf.WriteString(strconv.Itoa(t.Val))
+
+	if t.Left == nil {
+		if t.Right != nil {
+			buf.WriteString("()")
+		}
+	} else {
+		buf.WriteString("(")
+		buf.WriteString(tree2str(t.Left))
+		buf.WriteString(")")
+	}
+
+	if t.Right != nil {
+		buf.WriteString("(")
+		buf.WriteString(tree2str(t.Right))
+		buf.WriteString(")")
+	}
+
+	return buf.String()
 }
