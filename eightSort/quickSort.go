@@ -29,19 +29,24 @@ func quick(arr []int, left, right int) {
 	//将比基准小的放在左边
 	//比基准大的放在右边
 	for min < max {
+		//从右边取第一个小于基准值的数
 		for max > min && arr[max] > p {
 			max--
 		}
 
+		//将该数交换到min处
 		arr[min] = arr[max]
 
+		//从左边取第一个不小于基准值的数
 		for max > min && arr[min] <= p {
 			min++
 		}
 
+		//将该数交换到max处
 		arr[max] = arr[min]
 	}
 
+	//此时min位置为基准值的位置
 	arr[min] = p
 
 	quick(arr, left, min-1)
