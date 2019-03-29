@@ -111,15 +111,15 @@ public void search(String original, String find, int next[]) {
 //TODO:KMP算法未理解
 func kmpNext(s string) []int {
 	next := make([]int, len(s))
-	next[0] = -1
-	k := -1
+	next[0] = 0
+	k := 0
 
 	for i := 1; i < len(s); i++ {
-		for k > -1 && s[i] != s[k+1] {
+		for k > 0 && s[i] != s[k] {
 			k = next[k]
 		}
 
-		if s[k+1] == s[i] {
+		if s[k] == s[i] {
 			k++
 		}
 

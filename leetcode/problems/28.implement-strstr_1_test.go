@@ -32,8 +32,8 @@ func Test_KMP(t *testing.T) {
 		needle   string
 		want     int
 	}{
-		{"BBC ABCDAB ABCDABDE", "ABCDABD", -1},
-		//{"hello", "ll", 2},
+		//{"BBC ABCDAB ABCDABDE", "ABCDABD", 10},
+		{"hello", "ll", 2},
 		//{"hello", "lll", -1},
 		//{"hello", "", 0},
 		//{"hello", "o", 4},
