@@ -10,9 +10,9 @@ func Test_findSubstring(t *testing.T) {
 		words []string
 		want  []int
 	}{
-		//{"barfoothefoobarman", []string{"foo", "bar"}, []int{0, 9}},
-		//{"wordgoodgoodgoodbestword", []string{"word", "good", "best", "word"}, []int{}},
-		//{"wordgoodgoodgoodbestword", []string{"word", "good", "best", "good"}, []int{8}},
+		{"barfoothefoobarman", []string{"foo", "bar"}, []int{0, 9}},
+		{"wordgoodgoodgoodbestword", []string{"word", "good", "best", "word"}, []int{}},
+		{"wordgoodgoodgoodbestword", []string{"word", "good", "best", "good"}, []int{8}},
 		{"wordgoodgoodgoodbestword", []string{"word", "good", "best", "word"}, []int{}},
 	}
 	for _, tt := range tests {
