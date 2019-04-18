@@ -1,6 +1,7 @@
 package problems
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -42,5 +43,56 @@ func TestTreeNode_Equal(t *testing.T) {
 				t.Errorf("TreeNode.Equal() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestPrintTree(t *testing.T) {
+	arr := []interface{}{1, 2, 3, 4, 5}
+	root := NewTree(arr)
+
+	m := make(map[int][]*TreeNode)
+	findLevel(root, 0, m)
+
+	for i := 0; i < len(m); i++ {
+		for j := 0; j < len(m[i]); j++ {
+			fmt.Print(m[i][j].Val, " ")
+		}
+
+		fmt.Println()
+	}
+}
+
+func findLevel(node *TreeNode, l int, m map[int][]*TreeNode) {
+	if node == nil {
+		return
+	}
+
+	m[l] = append(m[l], node)
+	findLevel(node.Left, l+1, m)
+	findLevel(node.Right, l+1, m)
+}
+
+func TestPrintTree2(t *testing.T) {
+	arr := []interface{}{1, 2, 3, 4, 5}
+	root := NewTree(arr)
+	nodes := []*TreeNode{root}
+
+	for len(nodes) > 0 {
+		newNodes := make([]*TreeNode, 0)
+		for i := 0; i < len(nodes); i++ {
+			node := nodes[i]
+			fmt.Print(node.Val, " ")
+
+			if node.Left != nil {
+				newNodes = append(newNodes, node.Left)
+			}
+
+			if node.Right != nil {
+				newNodes = append(newNodes, node.Right)
+			}
+		}
+		fmt.Println()
+
+		nodes = newNodes
 	}
 }
