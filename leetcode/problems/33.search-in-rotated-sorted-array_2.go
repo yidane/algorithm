@@ -39,27 +39,33 @@ package problems
  * Output: -1
  *
  */
+
+//o(log n),二分法
 func search33(nums []int, target int) int {
-	for i, j := 0, len(nums)-1; i <= j; {
+	l := len(nums)
+	for i, j := 0, l-1; i <= j; {
 		left := nums[i]
 		right := nums[j]
 
-		if left == target {
-			return i
+		m := (j + i) / 2
+
+		mid := nums[m]
+		if mid == target {
+			return m
 		}
 
-		if right == target {
-			return j
-		}
-
-		if left > target {
-			if right < target {
-				return -1
+		if mid < right {
+			if mid < target && right >= target {
+				i = m + 1
 			} else {
-				j--
+				j = m - 1
 			}
 		} else {
-			i++
+			if left <= target && mid > target {
+				j = m - 1
+			} else {
+				i = m + 1
+			}
 		}
 	}
 
