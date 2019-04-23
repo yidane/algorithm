@@ -21,6 +21,10 @@ func Test_rob(t *testing.T) {
 			if got := rob(tt.args); got != tt.want {
 				t.Errorf("rob() = %v, want %v", got, tt.want)
 			}
+
+			if got := rob1(tt.args); got != tt.want {
+				t.Errorf("rob() = %v, want %v", got, tt.want)
+			}
 		})
 	}
 }

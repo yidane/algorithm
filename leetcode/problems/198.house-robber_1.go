@@ -74,3 +74,32 @@ func rob(nums []int) int {
 
 	return robEven
 }
+
+//递归实现，比较好理解
+//通过递归，可以推导出动态规划算法公式
+func rob1(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	if len(nums) == 2 {
+		if nums[0] > nums[1] {
+			return nums[0]
+		} else {
+			return nums[1]
+		}
+	}
+
+	odd := nums[0] + rob(nums[2:])
+	even := nums[1] + rob(nums[3:])
+
+	if odd > even {
+		return odd
+	}
+
+	return even
+}
