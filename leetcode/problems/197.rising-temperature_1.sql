@@ -40,3 +40,10 @@
 # Write your MySQL query statement below
 
 
+#1 worst
+select w2.ID from Weather w1
+inner join Weather w2
+on DATE_ADD(w1.RecordDate,INTERVAL 1 DAY) = w2.RecordDate
+and w1.Temperature < w2.Temperature;
+
+#2 TODO 需要再考虑考虑
