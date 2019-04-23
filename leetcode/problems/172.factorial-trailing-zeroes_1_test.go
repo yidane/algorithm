@@ -27,6 +27,10 @@ func Test_trailingZeroes(t *testing.T) {
 			if got := trailingZeroes(tt.args); got != tt.want {
 				t.Errorf("trailingZeroes() = %v, want %v", got, tt.want)
 			}
+
+			if got := trailingZeroes1(tt.args); got != tt.want {
+				t.Errorf("trailingZeroes() = %v, want %v", got, tt.want)
+			}
 		})
 	}
 }

@@ -32,6 +32,8 @@ package problems
  * Note: Your solution should be in logarithmic time complexity.
  *
  */
+
+//主要计算出现多少个5和10，100,1000...
 func trailingZeroes(n int) int {
 	count := 0
 	for i := 5; i <= n; i += 5 {
@@ -45,4 +47,15 @@ func trailingZeroes(n int) int {
 	}
 
 	return count
+}
+
+//Best
+//应该是规律计算出来的
+func trailingZeroes1(n int) int {
+	res := 0
+	for n >= 5 {
+		n /= 5
+		res += n
+	}
+	return res
 }
